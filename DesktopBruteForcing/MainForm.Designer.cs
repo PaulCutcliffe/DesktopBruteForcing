@@ -1,6 +1,6 @@
 ﻿namespace DesktopBruteForcing
 {
-    partial class FormularioInicio
+    partial class MainForm
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormularioInicio));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dTextBoxRuta = new System.Windows.Forms.TextBox();
             this.dButtonExaminar = new System.Windows.Forms.Button();
             this.dButtonIniciar = new System.Windows.Forms.Button();

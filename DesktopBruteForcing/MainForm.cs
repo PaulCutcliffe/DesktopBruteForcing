@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 
 namespace DesktopBruteForcing
 {
-    public partial class FormularioInicio : Form
+    public partial class MainForm : Form
     {
         #region Imports
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
@@ -50,13 +50,13 @@ namespace DesktopBruteForcing
         public static extern int GetWindowText(IntPtr hWnd, [Out, MarshalAs(UnmanagedType.LPTStr)] StringBuilder lpString, int nMaxCount);
         #endregion
 
-        #region Constantes
-        private const string SEPARADOR_TIEMPO = "##";
-        private const string PALABRA_RESERVADA = "$$";
-        private const string FICHERO_LOG = "log.txt";
+        #region Constants
+        private const string TIME_SEPARATOR = "##";
+        private const string RESERVED_WORD = "$$";
+        private const string LOG_FILE = "log.txt";
         #endregion
 
-        #region Propiedades
+        #region Properties
         private List<string> Diccionario { get; set; }
         private bool AtaqueEnMarcha { get; set; }
         private string TituloVentanaAtaque { get; set; }
@@ -64,14 +64,14 @@ namespace DesktopBruteForcing
         #endregion
 
         #region Constructor
-        public FormularioInicio()
+        public MainForm()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
         }
         #endregion
 
-        #region Eventos
+        #region Events
         private void Form1_Activated(object sender, EventArgs e)
         {
             if (this.PunteroVentanaAplicacion == null)
@@ -107,7 +107,7 @@ namespace DesktopBruteForcing
         }
         #endregion
 
-        #region Miembros privados
+        #region Private members
         public void Registro(string pStrMensaje, bool pBlnIncluirFecha = true)
         {
             string lStrMensaje = "";
@@ -143,7 +143,7 @@ namespace DesktopBruteForcing
                 {
                     this.Registro("Trying the password -" + lStrPalabra + "-");
 
-                    string lStrPulsacionFinal = this.dTextBoxPulsacionesEntrePalabras.Text.Replace(PALABRA_RESERVADA, lStrPalabra);
+                    string lStrPulsacionFinal = this.dTextBoxPulsacionesEntrePalabras.Text.Replace(RESERVED_WORD, lStrPalabra);
                     while (lStrPulsacionFinal.Length > 0)
                     {
                         if (this.PunteroVentanaAplicacion.Value == GetForegroundWindow())
@@ -154,8 +154,8 @@ namespace DesktopBruteForcing
 
                         string lStrToken = lStrPulsacionFinal;
 
-                        int lIntInicio = lStrPulsacionFinal.IndexOf(SEPARADOR_TIEMPO);
-                        int lIntFin = lStrPulsacionFinal.IndexOf(SEPARADOR_TIEMPO, lIntInicio + 1);
+                        int lIntInicio = lStrPulsacionFinal.IndexOf(TIME_SEPARATOR);
+                        int lIntFin = lStrPulsacionFinal.IndexOf(TIME_SEPARATOR, lIntInicio + 1);
 
                         if (lIntInicio != -1 && lIntFin != -1)
                         {
@@ -172,13 +172,13 @@ namespace DesktopBruteForcing
 
                         if (lIntInicio != -1 && lIntFin != -1)
                         {
-                            string lStrValor = lStrPulsacionFinal.Substring(lIntInicio + SEPARADOR_TIEMPO.Length, lIntFin - lIntInicio - SEPARADOR_TIEMPO.Length);
+                            string lStrValor = lStrPulsacionFinal.Substring(lIntInicio + TIME_SEPARATOR.Length, lIntFin - lIntInicio - TIME_SEPARATOR.Length);
                             int lIntValor = int.Parse(lStrValor);
 
                             Thread.Sleep(lIntValor);
                         }
 
-                        lStrPulsacionFinal = lStrPulsacionFinal.Substring(lIntFin + SEPARADOR_TIEMPO.Length);
+                        lStrPulsacionFinal = lStrPulsacionFinal.Substring(lIntFin + TIME_SEPARATOR.Length);
                     }
 
                     if (this.TituloVentanaAtaque != this.ObtenerTextoDeTituloVentanaFoco())

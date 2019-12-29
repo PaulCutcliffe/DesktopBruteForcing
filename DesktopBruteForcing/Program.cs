@@ -8,7 +8,7 @@ namespace DesktopBruteForcing
     static class Program
     {
         /// <summary>
-        /// Punto de entrada principal para la aplicación.
+        /// Main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
@@ -17,7 +17,7 @@ namespace DesktopBruteForcing
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new FormularioInicio());
+                Application.Run(new MainForm());
             }
             catch (Exception lObjExcepcion)
             {

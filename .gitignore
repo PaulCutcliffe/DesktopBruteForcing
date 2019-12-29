@@ -213,3 +213,4 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+/.vs/DesktopBruteForcing/v16/Server/sqlite3/db.lock
