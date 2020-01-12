@@ -87,7 +87,7 @@
             this.dTextBoxPulsacionesEntrePalabras.Name = "dTextBoxPulsacionesEntrePalabras";
             this.dTextBoxPulsacionesEntrePalabras.Size = new System.Drawing.Size(527, 20);
             this.dTextBoxPulsacionesEntrePalabras.TabIndex = 3;
-            this.dTextBoxPulsacionesEntrePalabras.Text = "$${ENTER}{ENTER}##100##";
+            this.dTextBoxPulsacionesEntrePalabras.Text = "{ENTER}+{TAB}+{TAB}+{TAB}+{HOME}$${ENTER}##100##";
             // 
             // Log
             // 
@@ -118,7 +118,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Keystrokes";
             // 
-            // FormularioInicio
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,7 +131,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormularioInicio";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeBF";
             this.Activated += new System.EventHandler(this.Form1_Activated);
